@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request, make_response
-from SQLAlchemy import Postagem, Autor, app, db
+from estrutura_banco_de_dados import Postagem, Autor, app, db
 import jwt
 from datetime import datetime, timedelta
 from functools import wraps
