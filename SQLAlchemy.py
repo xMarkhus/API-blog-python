@@ -1,11 +1,12 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+
 # criar um API flask
 app = Flask(__name__)
 # criar uma instância de SQLAlchemy
 app.config['SECRET_KEY'] = 'ASHUH121@#ghu7-UHJ6y801'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres.dvoohlefyqcagoivelur:eSaMXqb2bZPY7uK6@aws-0-sa-east-1.pooler.supabase.com:6543/postgres'
 
 db = SQLAlchemy(app)
 db: SQLAlchemy
