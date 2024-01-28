@@ -46,8 +46,8 @@ def login():
 
 # http://localhost:5000
 @app.route('/postagens')
-@validar_token
-def obter_postagens(autor):
+# @validar_token
+def obter_postagens():
     postagens = Postagem.query.all()
     lista_de_postagens = []
     for postagem in postagens:
@@ -62,8 +62,8 @@ def obter_postagens(autor):
 # http://localhost:5000/postagem/[indice]
 
 @app.route('/postagem/<int:id_postagem>',methods=['GET'])
-@validar_token
-def obter_postagem_por_id(autor, id_postagem):
+# @validar_token
+def obter_postagem_por_id(id_postagem):
     postagem = Postagem.query.filter_by(id_postagem=id_postagem).first()
     if not postagem:
         return jsonify({'mensagem': 'Postagem não encontrada.'}, 404)
@@ -124,8 +124,8 @@ def deletar_postagem(autor, id_postagem):
     return jsonify({'mensagem' : 'postagem excluída com sucesso'}, 200)
 
 @app.route('/autores')
-@validar_token
-def consultar_autores(autor):
+# @validar_token
+def consultar_autores():
     autores = Autor.query.all()
     lista_de_autores = []
     for autor in autores:
@@ -138,8 +138,8 @@ def consultar_autores(autor):
     return jsonify({'autores': lista_de_autores})
 
 @app.route('/autor/<int:id_autor>', methods=['GET'])
-@validar_token
-def consultar_autor_por_id(autor, id_autor):
+# @validar_token
+def consultar_autor_por_id(id_autor):
     autor = Autor.query.filter_by(id_autor=id_autor).first()
     if not autor:
         return jsonify('Autor não encontrado.')
