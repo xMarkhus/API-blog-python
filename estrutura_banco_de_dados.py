@@ -1,12 +1,14 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+import os 
 
-
+load_dotenv()
 # criar um API flask
 app = Flask(__name__)
 # criar uma instância de SQLAlchemy
-app.config['SECRET_KEY'] = 'ASHUH121@#ghu7-UHJ6y801'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres.dvoohlefyqcagoivelur:eSaMXqb2bZPY7uK6@aws-0-sa-east-1.pooler.supabase.com:6543/postgres'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI')
 
 db = SQLAlchemy(app)
 db: SQLAlchemy
@@ -36,7 +38,7 @@ def inicializar_banco():
         db.drop_all()
         db.create_all()
         # criar usuários administradores
-        autor = Autor(nome='Marcos', email='marcosmartinsdevpy@gmail.com', senha = '12345', admin = True)
+        autor = Autor(nome=os.getenv('nome'), email=os.getenv('email'), senha = os.getenv('senha'), admin = True)
         db.session.add(autor)
         db.session.commit()
 
