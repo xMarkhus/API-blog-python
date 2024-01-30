@@ -8,7 +8,7 @@ load_dotenv()
 app = Flask(__name__)
 # criar uma instância de SQLAlchemy
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('BD_URI')
 
 db = SQLAlchemy(app)
 db: SQLAlchemy
